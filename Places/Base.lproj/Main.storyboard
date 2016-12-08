@@ -74,10 +74,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="ingredientsLabel" destination="XmY-H3-ZcW" id="aIC-B1-mCZ"/>
+                                    <outlet property="locationLabel" destination="XmY-H3-ZcW" id="HHc-Mi-q53"/>
                                     <outlet property="nameLabel" destination="C2o-4K-H1E" id="LBE-MU-Kjw"/>
                                     <outlet property="thumbnailimageView" destination="hFx-Fe-IWx" id="y8J-TJ-Ykq"/>
-                                    <outlet property="timeLabel" destination="RgV-uQ-qYp" id="SR7-CW-dKs"/>
+                                    <outlet property="typeLabel" destination="RgV-uQ-qYp" id="CLC-a8-r7H"/>
                                     <segue destination="GJV-we-R4h" kind="show" identifier="showDetail" id="hgG-d6-CID">
                                         <nil key="action"/>
                                     </segue>

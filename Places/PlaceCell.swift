@@ -12,8 +12,8 @@ class PlaceCell: UITableViewCell {
     
     @IBOutlet var thumbnailimageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var timeLabel: UILabel!
-    @IBOutlet var ingredientsLabel: UILabel!
+    @IBOutlet var typeLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -17,6 +17,7 @@
 		A5398A561DF77D3900E75DA6 /* PlaceDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */; };
 		A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */; };
 		A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A581DF77D8B00E75DA6 /* Place.swift */; };
+		A576E1781DF9C290000A0460 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A576E1771DF9C28F000A0460 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewCell.swift; sourceTree = "<group>"; };
 		A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		A5398A581DF77D8B00E75DA6 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		A576E1771DF9C28F000A0460 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A576E1781DF9C290000A0460 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,7 @@
 			children = (
 				A5398A3D1DF777B900E75DA6 /* Places */,
 				A5398A3C1DF777B900E75DA6 /* Products */,
+				A576E1761DF9C28F000A0460 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +81,14 @@
 				A5398A4A1DF777B900E75DA6 /* Info.plist */,
 			);
 			path = Places;
+			sourceTree = "<group>";
+		};
+		A576E1761DF9C28F000A0460 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A576E1771DF9C28F000A0460 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +124,11 @@
 					A5398A3A1DF777B900E75DA6 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
