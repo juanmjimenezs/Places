@@ -21,10 +21,12 @@ class MapViewController: UIViewController {
         
         self.mapView.delegate = self
         
+        //Algunas cosas que se pueden agregar al mapa
         self.mapView.showsTraffic = true
         self.mapView.showsScale = true
         self.mapView.showsCompass = true
 
+        //Convertimos la dirección en coordenadas y luego agregamos un pin en esas coordenadas
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(place.location) { [unowned self] (placemarks, error) in
             if error == nil {
@@ -63,13 +65,17 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
+    
+    //Esta función se llama por cada uno de los pines que haya en el mapa
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "myPin"
         
+        //Si es el pin de ubicación del propio usuario...
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
         
+        //Creamos el objeto con la vista del pin
         var annotationView: MKPinAnnotationView? = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
         
         if annotationView == nil {
@@ -77,10 +83,12 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.canShowCallout = true
         }
         
+        //Colocamos la imagen dentro de un UIImageView y la mostramos en el lado izquierdo del annotationView
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 52, height: 52))
         imageView.image = self.place.image
         annotationView?.leftCalloutAccessoryView = imageView
         
+        //Aquí le cambiamos el color al pin
         annotationView?.pinTintColor = UIColor.green
         
         return annotationView
