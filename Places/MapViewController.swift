@@ -50,7 +50,11 @@ class MapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    //Esta función retornando el valor 'true' indica que preferimos ocultar la barra de estado
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     /*
     // MARK: - Navigation

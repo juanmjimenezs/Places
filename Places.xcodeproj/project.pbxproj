@@ -70,18 +70,18 @@
 		A5398A3D1DF777B900E75DA6 /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				A5398A4A1DF777B900E75DA6 /* Info.plist */,
 				A5398A3E1DF777B900E75DA6 /* AppDelegate.swift */,
-				A5398A401DF777B900E75DA6 /* ViewController.swift */,
-				A5398A501DF77C2400E75DA6 /* PlaceCell.swift */,
 				A5398A521DF77D3900E75DA6 /* DetailViewController.swift */,
-				A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */,
-				A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */,
-				A5398A421DF777B900E75DA6 /* Main.storyboard */,
 				A567B5FE1DF9E19C00C43594 /* MapViewController.swift */,
 				A5398A581DF77D8B00E75DA6 /* Place.swift */,
+				A5398A501DF77C2400E75DA6 /* PlaceCell.swift */,
+				A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */,
+				A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */,
+				A5398A401DF777B900E75DA6 /* ViewController.swift */,
 				A5398A451DF777B900E75DA6 /* Assets.xcassets */,
 				A5398A471DF777B900E75DA6 /* LaunchScreen.storyboard */,
-				A5398A4A1DF777B900E75DA6 /* Info.plist */,
+				A5398A421DF777B900E75DA6 /* Main.storyboard */,
 			);
 			path = Places;
 			sourceTree = "<group>";

@@ -17,7 +17,16 @@ class ViewController: UITableViewController {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        var place = Place(name: "Alexanderplatz", type: "Square", location: "Alexanderstraße 4 10178 Berlin, Deutschland", image: #imageLiteral(resourceName: "alexanderplatz"), phone: "5550000", web: "https://es.wikipedia.org/wiki/Alexanderplatz")
+        var place = Place(name: "Great Wall", type: "Monument", location: "Great Wall, Mutianyu Beijing, China", image: #imageLiteral(resourceName: "murallachina"), phone: "+27 20 7219 4272", web: "https://en.wikipedia.org/wiki/Great_Wall_of_China")
+        self.places.append(place)
+        
+        place = Place(name: "Tower of Pisa", type: "Monument", location: "Piazza del Duomo, 56126 Pisa PI, Italia", image: #imageLiteral(resourceName: "torrepisa"), phone: "+41 20 7219 4272", web: "http://www.towerofpisa.org/")
+        self.places.append(place)
+        
+        place = Place(name: "La Seu de Mallorca", type: "Catedral", location: "La Seu Plaza de la Seu 5 07001 Palma Baleares, España", image: #imageLiteral(resourceName: "mallorca"), phone: "+34 902 02 24 45", web: "http://www.catedraldemallorca.info/principal/")
+        self.places.append(place)
+        
+        place = Place(name: "Alexanderplatz", type: "Square", location: "Alexanderstraße 4 10178 Berlin, Deutschland", image: #imageLiteral(resourceName: "alexanderplatz"), phone: "5550000", web: "https://es.wikipedia.org/wiki/Alexanderplatz")
         self.places.append(place)
         
         place = Place(name: "Atomium", type: "Museum", location: "Atomiumsquare 11020 Bruxelles, België", image: #imageLiteral(resourceName: "atomium"), phone: "+32(0)2 475 6543", web: "http://atomium.be/")
@@ -30,15 +39,6 @@ class ViewController: UITableViewController {
         self.places.append(place)
         
         place = Place(name: "Torre Eiffel", type: "Monument", location: "5 Avenue Anatole France 75007 Paris, France", image: #imageLiteral(resourceName: "torreeiffel"), phone: "+43 20 7219 4272", web: "http://www.toureiffel.paris/")
-        self.places.append(place)
-
-        place = Place(name: "Great Wall", type: "Monument", location: "Great Wall, Mutianyu Beijing, China", image: #imageLiteral(resourceName: "murallachina"), phone: "+27 20 7219 4272", web: "https://en.wikipedia.org/wiki/Great_Wall_of_China")
-        self.places.append(place)
-        
-        place = Place(name: "Tower of Pisa", type: "Monument", location: "Piazza del Duomo, 56126 Pisa PI, Italia", image: #imageLiteral(resourceName: "torrepisa"), phone: "+41 20 7219 4272", web: "http://www.towerofpisa.org/")
-        self.places.append(place)
-        
-        place = Place(name: "La Seu de Mallorca", type: "Catedral", location: "La Seu Plaza de la Seu 5 07001 Palma Baleares, España", image: #imageLiteral(resourceName: "mallorca"), phone: "+34 902 02 24 45", web: "http://www.catedraldemallorca.info/principal/")
         self.places.append(place)
     }
     
@@ -126,6 +126,10 @@ class ViewController: UITableViewController {
                 destinationViewController.place = selectedPlace
             }
         }
+    }
+    
+    @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {
+        
     }
 }
 
