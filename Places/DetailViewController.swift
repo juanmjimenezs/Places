@@ -65,16 +65,17 @@ class DetailViewController: UIViewController {
         }
     }
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showMap" {
+            let destination = segue.destination as! MapViewController
+            destination.place = self.place
+        }
     }
-    */
 
 }
 
@@ -117,5 +118,13 @@ extension DetailViewController: UITableViewDataSource {
 }
 
 extension DetailViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2:
+            //Hemos seleccionado la geolocalización
+            self.performSegue(withIdentifier: "showMap", sender: nil)
+        default:
+            break
+        }
+    }
 }

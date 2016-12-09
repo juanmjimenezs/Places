@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xeb-HB-gEw" id="AW3-gm-hQy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hFx-Fe-IWx">
@@ -121,7 +121,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="65I-p2-o1n" id="Qbz-l3-Use">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OK1-At-bca">
@@ -199,6 +199,7 @@
                         <outlet property="placeImageView" destination="I8L-GH-zbC" id="dtL-yk-dYV"/>
                         <outlet property="ratingButton" destination="Ysw-hv-agp" id="YLY-o1-Gma"/>
                         <outlet property="tableView" destination="Bhg-GE-AfQ" id="iOQ-x4-NIG"/>
+                        <segue destination="SdR-5L-ogS" kind="show" identifier="showMap" id="jFH-gc-jYh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAS-la-WaX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,6 +324,38 @@
                 <exit id="QWf-e9-htR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2629.5999999999999" y="98.50074962518741"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Fz9-Ww-emm">
+            <objects>
+                <viewController id="SdR-5L-ogS" customClass="MapViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d07-XU-51c"/>
+                        <viewControllerLayoutGuide type="bottom" id="q1n-qG-j5m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eFY-LO-e19">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-9M-nwK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nwz-9M-nwK" firstAttribute="leading" secondItem="eFY-LO-e19" secondAttribute="leading" id="bTF-8P-DWo"/>
+                            <constraint firstAttribute="trailing" secondItem="nwz-9M-nwK" secondAttribute="trailing" id="iAS-PB-cuF"/>
+                            <constraint firstItem="q1n-qG-j5m" firstAttribute="top" secondItem="nwz-9M-nwK" secondAttribute="bottom" id="pC9-Hr-fMR"/>
+                            <constraint firstItem="nwz-9M-nwK" firstAttribute="top" secondItem="eFY-LO-e19" secondAttribute="top" id="yzL-GA-aq6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="nwz-9M-nwK" id="fCy-pr-uCv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dC-Gr-i9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1728.8" y="895.50224887556226"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SnR-tL-8ed">
