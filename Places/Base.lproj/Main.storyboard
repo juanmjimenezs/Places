@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="847.20000000000005" y="98.50074962518741"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Add Place View Controller-->
         <scene sceneID="WuN-ch-sOC">
             <objects>
-                <tableViewController id="yMY-xN-ip0" sceneMemberID="viewController">
+                <tableViewController id="yMY-xN-ip0" customClass="AddPlaceViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AXX-rf-x5z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -345,6 +345,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="LtS-WM-lp5"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="0xd-ar-yuU" id="5uU-pT-vPl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11c-e2-Q8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="EPz-8U-gx5" userLabel="Exit" sceneMemberID="exit"/>

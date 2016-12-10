@@ -18,6 +18,7 @@
 		A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */; };
 		A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A581DF77D8B00E75DA6 /* Place.swift */; };
 		A567B5FF1DF9E19D00C43594 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B5FE1DF9E19C00C43594 /* MapViewController.swift */; };
+		A567B6011DFB86CD00C43594 /* AddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B6001DFB86CD00C43594 /* AddPlaceViewController.swift */; };
 		A576E1781DF9C290000A0460 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A576E1771DF9C28F000A0460 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		A5398A581DF77D8B00E75DA6 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A567B5FE1DF9E19C00C43594 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A567B6001DFB86CD00C43594 /* AddPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlaceViewController.swift; sourceTree = "<group>"; };
 		A576E1771DF9C28F000A0460 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 				A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */,
 				A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */,
 				A5398A401DF777B900E75DA6 /* ViewController.swift */,
+				A567B6001DFB86CD00C43594 /* AddPlaceViewController.swift */,
 				A5398A451DF777B900E75DA6 /* Assets.xcassets */,
 				A5398A471DF777B900E75DA6 /* LaunchScreen.storyboard */,
 				A5398A421DF777B900E75DA6 /* Main.storyboard */,
@@ -174,6 +177,7 @@
 				A5398A511DF77C2400E75DA6 /* PlaceCell.swift in Sources */,
 				A5398A411DF777B900E75DA6 /* ViewController.swift in Sources */,
 				A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */,
+				A567B6011DFB86CD00C43594 /* AddPlaceViewController.swift in Sources */,
 				A5398A561DF77D3900E75DA6 /* PlaceDetailViewCell.swift in Sources */,
 				A5398A3F1DF777B900E75DA6 /* AppDelegate.swift in Sources */,
 				A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */,
