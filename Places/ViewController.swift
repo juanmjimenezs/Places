@@ -128,8 +128,17 @@ class ViewController: UITableViewController {
         }
     }
     
+    //Cuando se regresa de cualquier vista hasta esta vista...
     @IBAction func unwindToMainViewController(segue: UIStoryboardSegue) {
-        
+        //Si viene desde la vista de agregar lugar
+        if segue.identifier == "unwindFromAddPlaceVC" {
+            if let addPlaceVC = segue.source as? AddPlaceViewController {
+                if let newPlace = addPlaceVC.place {
+                    self.places.append(newPlace)
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 }
 

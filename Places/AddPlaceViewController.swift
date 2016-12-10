@@ -30,6 +30,8 @@ class AddPlaceViewController: UITableViewController, UIImagePickerControllerDele
     
     var rating: String?
     
+    var place: Place?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,11 +68,10 @@ class AddPlaceViewController: UITableViewController, UIImagePickerControllerDele
                 let theImage = self.imageView.image,
                 let rating = self.rating {
         
-            let place = Place(name: name, type: type, location: address, image: theImage, phone: telephone, web: website)
-            place.rating = rating
-            print(place.name)
+            self.place = Place(name: name, type: type, location: address, image: theImage, phone: telephone, web: website)
+            self.place?.rating = rating
             
-            self.performSegue(withIdentifier: "unwindToMainViewController", sender: self)
+            self.performSegue(withIdentifier: "unwindFromAddPlaceVC", sender: self)
         } else {
             let alertController = UIAlertController(title: "It is missing some data", message: "Check all fields", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -86,19 +87,19 @@ class AddPlaceViewController: UITableViewController, UIImagePickerControllerDele
         switch sender.tag {
         case 1:
             self.rating = "dislike"
-            self.botton1.backgroundColor = defaultColor
-            self.botton2.backgroundColor = selectedColor
-            self.botton3.backgroundColor = selectedColor
-        case 2:
-            self.rating = "good"
             self.botton1.backgroundColor = selectedColor
             self.botton2.backgroundColor = defaultColor
-            self.botton3.backgroundColor = selectedColor
-        case 3:
-            self.rating = "great"
-            self.botton1.backgroundColor = selectedColor
+            self.botton3.backgroundColor = defaultColor
+        case 2:
+            self.rating = "good"
+            self.botton1.backgroundColor = defaultColor
             self.botton2.backgroundColor = selectedColor
             self.botton3.backgroundColor = defaultColor
+        case 3:
+            self.rating = "great"
+            self.botton1.backgroundColor = defaultColor
+            self.botton2.backgroundColor = defaultColor
+            self.botton3.backgroundColor = selectedColor
         default:
             break
         }

@@ -349,7 +349,7 @@
                     <navigationItem key="navigationItem" id="M3M-vQ-PoB">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Iua-SQ-jR8">
                             <connections>
-                                <segue destination="EPz-8U-gx5" kind="unwind" identifier="unwindToMainViewController" unwindAction="unwindToMainViewControllerWithSegue:" id="6Cj-Rr-37l"/>
+                                <segue destination="EPz-8U-gx5" kind="unwind" identifier="unwindFromAddPlaceVC" unwindAction="unwindToMainViewControllerWithSegue:" id="6Cj-Rr-37l"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="LtS-WM-lp5">
