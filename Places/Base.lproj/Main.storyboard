@@ -293,28 +293,37 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="02D-Lw-bSB">
-                                                    <rect key="frame" x="8" y="36.5" width="359" height="31"/>
+                                                    <rect key="frame" x="8" y="36" width="359" height="31.5"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-mo-0gi">
-                                                            <rect key="frame" x="0.0" y="0.5" width="113" height="30"/>
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-mo-0gi">
+                                                            <rect key="frame" x="0.0" y="1" width="113" height="30"/>
                                                             <color key="backgroundColor" red="0.94117647410000005" green="0.49803921579999999" blue="0.35294118520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="I don't like">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="ratingPressed:" destination="yMY-xN-ip0" eventType="touchUpInside" id="fHm-Jg-WfH"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4k-WU-lix">
-                                                            <rect key="frame" x="123" y="0.5" width="113" height="30"/>
+                                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4k-WU-lix">
+                                                            <rect key="frame" x="123" y="1" width="113" height="30"/>
                                                             <color key="backgroundColor" red="0.94117647410000005" green="0.49803921579999999" blue="0.35294118520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="I like">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="ratingPressed:" destination="yMY-xN-ip0" eventType="touchUpInside" id="yQS-iT-kQT"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9v-Bj-eIY">
-                                                            <rect key="frame" x="246" y="0.5" width="113" height="30"/>
+                                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9v-Bj-eIY">
+                                                            <rect key="frame" x="246" y="1" width="113" height="30"/>
                                                             <color key="backgroundColor" red="0.94117647410000005" green="0.49803921579999999" blue="0.35294118520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="I love">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="ratingPressed:" destination="yMY-xN-ip0" eventType="touchUpInside" id="GT6-7j-IcZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -340,13 +349,25 @@
                     <navigationItem key="navigationItem" id="M3M-vQ-PoB">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Iua-SQ-jR8">
                             <connections>
-                                <segue destination="EPz-8U-gx5" kind="unwind" unwindAction="unwindToMainViewControllerWithSegue:" id="6Cj-Rr-37l"/>
+                                <segue destination="EPz-8U-gx5" kind="unwind" identifier="unwindToMainViewController" unwindAction="unwindToMainViewControllerWithSegue:" id="6Cj-Rr-37l"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LtS-WM-lp5"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LtS-WM-lp5">
+                            <connections>
+                                <action selector="savePressed:" destination="yMY-xN-ip0" id="ydJ-am-YeU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="botton1" destination="hpy-mo-0gi" id="lMA-U1-Um0"/>
+                        <outlet property="botton2" destination="Z4k-WU-lix" id="SaY-cX-CBp"/>
+                        <outlet property="botton3" destination="C9v-Bj-eIY" id="v9p-V9-03k"/>
                         <outlet property="imageView" destination="0xd-ar-yuU" id="5uU-pT-vPl"/>
+                        <outlet property="textfieldAddress" destination="EBZ-9p-LHo" id="wsM-Rl-0rC"/>
+                        <outlet property="textfieldName" destination="yhZ-Ql-8bN" id="T76-It-vpX"/>
+                        <outlet property="textfieldTelephone" destination="Qub-VC-izx" id="p4w-L6-Q4d"/>
+                        <outlet property="textfieldType" destination="47y-Ki-LKz" id="Ovf-HG-7Kl"/>
+                        <outlet property="textfieldWebsite" destination="VrU-2b-KBw" id="2Wn-2T-1XH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11c-e2-Q8W" userLabel="First Responder" sceneMemberID="firstResponder"/>

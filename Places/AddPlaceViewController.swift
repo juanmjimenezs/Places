@@ -8,25 +8,102 @@
 
 import UIKit
 
-class AddPlaceViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddPlaceViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var imageView: UIImageView!
+    
+    @IBOutlet var textfieldName: UITextField!
+    
+    @IBOutlet var textfieldType: UITextField!
+    
+    @IBOutlet var textfieldAddress: UITextField!
+    
+    @IBOutlet var textfieldTelephone: UITextField!
+    
+    @IBOutlet var textfieldWebsite: UITextField!
+    
+    @IBOutlet var botton1: UIButton!
+    
+    @IBOutlet var botton2: UIButton!
+    
+    @IBOutlet var botton3: UIButton!
+    
+    var rating: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.textfieldName.delegate = self
+        self.textfieldType.delegate = self
+        self.textfieldAddress.delegate = self
+        self.textfieldWebsite.delegate = self
+        self.textfieldTelephone.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Esconder el teclado cuando el usuario toque afuera del teclado
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //Esconder el teclado cuando presiona el botón "Return" del teclado
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
+    @IBAction func savePressed(_ sender: UIBarButtonItem) {
+        
+        if let name = self.textfieldName.text,
+                let type = self.textfieldType.text,
+                let address = self.textfieldAddress.text,
+                let telephone = self.textfieldTelephone.text,
+                let website = self.textfieldWebsite.text,
+                let theImage = self.imageView.image,
+                let rating = self.rating {
+        
+            let place = Place(name: name, type: type, location: address, image: theImage, phone: telephone, web: website)
+            place.rating = rating
+            print(place.name)
+            
+            self.performSegue(withIdentifier: "unwindToMainViewController", sender: self)
+        } else {
+            let alertController = UIAlertController(title: "It is missing some data", message: "Check all fields", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    let defaultColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+    let selectedColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+    
+    @IBAction func ratingPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            self.rating = "dislike"
+            self.botton1.backgroundColor = defaultColor
+            self.botton2.backgroundColor = selectedColor
+            self.botton3.backgroundColor = selectedColor
+        case 2:
+            self.rating = "good"
+            self.botton1.backgroundColor = selectedColor
+            self.botton2.backgroundColor = defaultColor
+            self.botton3.backgroundColor = selectedColor
+        case 3:
+            self.rating = "great"
+            self.botton1.backgroundColor = selectedColor
+            self.botton2.backgroundColor = selectedColor
+            self.botton3.backgroundColor = defaultColor
+        default:
+            break
+        }
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
