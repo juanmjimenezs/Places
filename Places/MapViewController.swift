@@ -89,7 +89,7 @@ extension MapViewController: MKMapViewDelegate {
         
         //Colocamos la imagen dentro de un UIImageView y la mostramos en el lado izquierdo del annotationView
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 52, height: 52))
-        imageView.image = self.place.image
+        imageView.image = UIImage(data: self.place.image! as Data)
         annotationView?.leftCalloutAccessoryView = imageView
         
         //Aquí le cambiamos el color al pin

@@ -17,7 +17,7 @@ class ViewController: UITableViewController {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        var place = Place(name: "Great Wall", type: "Monument", location: "Great Wall, Mutianyu Beijing, China", image: #imageLiteral(resourceName: "murallachina"), phone: "+27 20 7219 4272", web: "https://en.wikipedia.org/wiki/Great_Wall_of_China")
+        /*var place = Place(name: "Great Wall", type: "Monument", location: "Great Wall, Mutianyu Beijing, China", image: #imageLiteral(resourceName: "murallachina"), phone: "+27 20 7219 4272", web: "https://en.wikipedia.org/wiki/Great_Wall_of_China")
         self.places.append(place)
         
         place = Place(name: "Tower of Pisa", type: "Monument", location: "Piazza del Duomo, 56126 Pisa PI, Italia", image: #imageLiteral(resourceName: "torrepisa"), phone: "+41 20 7219 4272", web: "http://www.towerofpisa.org/")
@@ -39,7 +39,7 @@ class ViewController: UITableViewController {
         self.places.append(place)
         
         place = Place(name: "Torre Eiffel", type: "Monument", location: "5 Avenue Anatole France 75007 Paris, France", image: #imageLiteral(resourceName: "torreeiffel"), phone: "+43 20 7219 4272", web: "http://www.toureiffel.paris/")
-        self.places.append(place)
+        self.places.append(place)*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +79,7 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PlaceCell
         
         //Así es cuando tenemos elementos personalizados en la fila...
-        cell.thumbnailimageView.image = place.image
+        cell.thumbnailimageView.image = UIImage(data: place.image! as Data)
         cell.nameLabel.text = place.name
         cell.typeLabel.text = place.type
         cell.locationLabel.text = place.location
@@ -96,7 +96,7 @@ class ViewController: UITableViewController {
             let place = self.places[indexPath.row]
             
             let shareDefaultText = "Estoy visitando \(place.name) en la App de Juan Manuel"
-            let activityController = UIActivityViewController(activityItems: [shareDefaultText, place.image], applicationActivities: nil)
+            let activityController = UIActivityViewController(activityItems: [shareDefaultText, UIImage(data: place.image! as Data)!], applicationActivities: nil)
             
             self.present(activityController, animated: true, completion: nil)
         }

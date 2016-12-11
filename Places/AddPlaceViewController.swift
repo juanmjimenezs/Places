@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddPlaceViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
@@ -68,8 +69,24 @@ class AddPlaceViewController: UITableViewController, UIImagePickerControllerDele
                 let theImage = self.imageView.image,
                 let rating = self.rating {
         
-            self.place = Place(name: name, type: type, location: address, image: theImage, phone: telephone, web: website)
-            self.place?.rating = rating
+            if let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer {
+                let context = container.viewContext
+                
+                self.place = NSEntityDescription.insertNewObject(forEntityName: "Place", into: context) as? Place
+                self.place?.name = name
+                self.place?.type = type
+                self.place?.location = address
+                self.place?.phone = telephone
+                self.place?.web = website
+                self.place?.rating = rating
+                self.place?.image = UIImagePNGRepresentation(theImage) as NSData?
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Ha habido al guardar el lugar en Core Data")
+                }
+            }
             
             self.performSegue(withIdentifier: "unwindFromAddPlaceVC", sender: self)
         } else {

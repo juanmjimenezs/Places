@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
         
         self.title = self.place.name
 
-        self.placeImageView.image = self.place.image
+        self.placeImageView.image = UIImage(data: self.place.image! as Data)
         //Aquí cambiamos el color de fondo de la tabla
         self.tableView.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         //Si al final hay celdas sin usar, entonces les damos un tamaño de cero para que no se vean
@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
 
         //Cargamos la imagen según la valoración que tenga
-        let image = UIImage(named: self.place.rating)
+        let image = UIImage(named: self.place.rating!)
         self.ratingButton.setImage(image, for: .normal)
     }
     
@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
                 //Guardamos en el objeto la valoración que se acaba de dar
                 self.place.rating = rating
                 //Cargamos la imagen según la valoración dada
-                let image = UIImage(named: self.place.rating)
+                let image = UIImage(named: self.place.rating!)
                 self.ratingButton.setImage(image, for: .normal)
             }
         }
