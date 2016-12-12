@@ -61,6 +61,16 @@ class DetailViewController: UIViewController {
                 //Cargamos la imagen según la valoración dada
                 let image = UIImage(named: self.place.rating!)
                 self.ratingButton.setImage(image, for: .normal)
+                
+                //Como ya está modificado el objeto "self.place" que es de tipo CoreData, lo unico que falta es guardar el contexto
+                if let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer {
+                    let context = container.viewContext
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
             }
         }
     }
