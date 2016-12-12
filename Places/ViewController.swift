@@ -7,15 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UITableViewController {
     
     var places: [Place] = []
+    var fetchResultController: NSFetchedResultsController<Place>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        let fetchRequest: NSFetchRequest<Place> = NSFetchRequest(entityName: "Place")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        //Consultamos todos los lugares y los agregamos al array
+        if let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer {
+            let context = container.viewContext
+            self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            self.fetchResultController.delegate = self
+            do {
+                try self.fetchResultController.performFetch()
+                self.places = self.fetchResultController.fetchedObjects!
+            } catch {
+                print("Error: \(error)")
+            }
+        }
         
         /*var place = Place(name: "Great Wall", type: "Monument", location: "Great Wall, Mutianyu Beijing, China", image: #imageLiteral(resourceName: "murallachina"), phone: "+27 20 7219 4272", web: "https://en.wikipedia.org/wiki/Great_Wall_of_China")
         self.places.append(place)
@@ -135,10 +154,45 @@ class ViewController: UITableViewController {
             if let addPlaceVC = segue.source as? AddPlaceViewController {
                 if let newPlace = addPlaceVC.place {
                     self.places.append(newPlace)
-                    self.tableView.reloadData()
+                    //self.tableView.reloadData()
                 }
             }
         }
     }
 }
 
+/*
+ Este controllador se encarga de actualizar automaticamente nuestra lista de lugares cada vez que haya
+ un cambio (insert, update, delete)
+ */
+extension ViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                self.tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                self.tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        case .move:
+            if let indexPath = indexPath, let newIndexPath = newIndexPath {
+                self.tableView.moveRow(at: indexPath, to: newIndexPath)
+            }
+        }
+        self.places = controller.fetchedObjects as! [Place]
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
+    }
+}
