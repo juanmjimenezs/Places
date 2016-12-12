@@ -48,6 +48,11 @@ class AddPlaceViewController: UITableViewController, UIImagePickerControllerDele
         // Dispose of any resources that can be recreated.
     }
     
+    //Esta función retornando el valor 'true' indica que preferimos ocultar la barra de estado
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     //Esconder el teclado cuando el usuario toque afuera del teclado
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
