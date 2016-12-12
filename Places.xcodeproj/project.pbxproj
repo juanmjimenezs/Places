@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51F093A1DFE19EC007B3ADA /* Places.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A51F09381DFE19EC007B3ADA /* Places.xcdatamodeld */; };
 		A5398A3F1DF777B900E75DA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A3E1DF777B900E75DA6 /* AppDelegate.swift */; };
 		A5398A411DF777B900E75DA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A401DF777B900E75DA6 /* ViewController.swift */; };
 		A5398A441DF777B900E75DA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5398A421DF777B900E75DA6 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A51F09391DFE19EC007B3ADA /* Places.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Places.xcdatamodel; sourceTree = "<group>"; };
 		A5398A3B1DF777B900E75DA6 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5398A3E1DF777B900E75DA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5398A401DF777B900E75DA6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				A5398A521DF77D3900E75DA6 /* DetailViewController.swift */,
 				A567B5FE1DF9E19C00C43594 /* MapViewController.swift */,
 				A5398A581DF77D8B00E75DA6 /* Place.swift */,
+				A51F09381DFE19EC007B3ADA /* Places.xcdatamodeld */,
 				A5398A501DF77C2400E75DA6 /* PlaceCell.swift */,
 				A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */,
 				A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */,
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5398A511DF77C2400E75DA6 /* PlaceCell.swift in Sources */,
+				A51F093A1DFE19EC007B3ADA /* Places.xcdatamodeld in Sources */,
 				A5398A411DF777B900E75DA6 /* ViewController.swift in Sources */,
 				A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */,
 				A567B6011DFB86CD00C43594 /* AddPlaceViewController.swift in Sources */,
@@ -347,6 +351,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A51F09381DFE19EC007B3ADA /* Places.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A51F09391DFE19EC007B3ADA /* Places.xcdatamodel */,
+			);
+			currentVersion = A51F09391DFE19EC007B3ADA /* Places.xcdatamodel */;
+			path = Places.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5398A331DF777B900E75DA6 /* Project object */;
 }
