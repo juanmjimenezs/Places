@@ -12,12 +12,24 @@ import CoreData
 class ViewController: UITableViewController {
     
     var places: [Place] = []
+    var searchResult: [Place] = []
     var fetchResultController: NSFetchedResultsController<Place>!
+    var searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //Así inclimos la barra de busqueda en la vista...
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchResultsUpdater = self
+        //Personalización visual de la barra de busqueda...
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Search places..."
+        self.searchController.searchBar.tintColor = UIColor.white
+        self.searchController.searchBar.barTintColor = UIColor.darkGray
         
         let fetchRequest: NSFetchRequest<Place> = NSFetchRequest(entityName: "Place")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -87,12 +99,23 @@ class ViewController: UITableViewController {
     //Esta función indica el número de filas por sección.
     //Como no tenemos paginador entonces le indicamos el número total de elementos en el arreglo.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.places.count
+        if self.searchController.isActive {
+            return self.searchResult.count
+        } else {
+            return self.places.count
+        }
     }
     
     //Esta función aplica para cada fila de la tabla
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let place = places[indexPath.row]
+        let place: Place!
+        
+        if self.searchController.isActive {
+            place = self.searchResult[indexPath.row]
+        } else {
+            place = self.places[indexPath.row]
+        }
+        
         let cellID = "PlaceCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PlaceCell
@@ -112,7 +135,13 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Compartir
         let shareAction = UITableViewRowAction(style: .default, title: "Share") { (action, indexPath) in
-            let place = self.places[indexPath.row]
+            let place: Place!
+            
+            if self.searchController.isActive {
+                place = self.searchResult[indexPath.row]
+            } else {
+                place = self.places[indexPath.row]
+            }
             
             let shareDefaultText = "Estoy visitando \(place.name) en la App de Juan Manuel"
             let activityController = UIActivityViewController(activityItems: [shareDefaultText, UIImage(data: place.image! as Data)!], applicationActivities: nil)
@@ -145,12 +174,18 @@ class ViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             //Obtenemos el indexPath de la fila seleccionada
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                //Obtenemos la receta seleccionada
-                let selectedPlace = self.places[indexPath.row]
+                //Obtenemos el lugar seleccionado
+                let place: Place!
+                
+                if self.searchController.isActive {
+                    place = self.searchResult[indexPath.row]
+                } else {
+                    place = self.places[indexPath.row]
+                }
                 //Obtenemos el controlador de destino
                 let destinationViewController = segue.destination as! DetailViewController
                 //Almacenamos en destino el lugar
-                destinationViewController.place = selectedPlace
+                destinationViewController.place = place
             }
         }
     }
@@ -166,6 +201,13 @@ class ViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func filterContentFor(textToSearch: String) {
+        self.searchResult = self.places.filter({ (place) -> Bool in
+            let nameToFind = place.name.range(of: textToSearch, options: .caseInsensitive)
+            return nameToFind != nil
+        })
     }
 }
 
@@ -202,5 +244,16 @@ extension ViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
+    }
+}
+
+
+extension ViewController: UISearchResultsUpdating {
+    //Obtiene el texto de la barra de busqueda y llama a la función de busqueda pasandole este texto
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            self.filterContentFor(textToSearch: searchText)
+            self.tableView.reloadData()
+        }
     }
 }
