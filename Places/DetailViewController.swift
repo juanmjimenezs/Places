@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class DetailViewController: UIViewController {
     
@@ -127,14 +128,63 @@ extension DetailViewController: UITableViewDataSource {
     }
 }
 
+/**
+ Cuando seleccionamos una fila...
+ */
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 2:
             //Hemos seleccionado la geolocalización
             self.performSegue(withIdentifier: "showMap", sender: nil)
+        case 3:
+            //Llamar o enviar SMS
+            let alertController = UIAlertController(title: "Contact with \(self.place.name)", message: "How do you want to contact with the number \(self.place.phone!)?", preferredStyle: .actionSheet)
+            
+            let callAction = UIAlertAction(title: "Call", style: .default, handler: { (action) in
+                guard let phoneURL = URL(string: "tel://" + self.place.phone!) else { return }
+                let app = UIApplication.shared
+                
+                if app.canOpenURL(phoneURL) {
+                    app.open(phoneURL, options: [:], completionHandler: nil)
+                }
+            })
+            alertController.addAction(callAction)
+            
+            let smsAction = UIAlertAction(title: "Message", style: .default, handler: { (action) in
+                if MFMessageComposeViewController.canSendText() {
+                    let msg = "Hi from the app of places created by Juan Manuel Jiménez Sánchez"
+                    let msgVC = MFMessageComposeViewController()
+                    msgVC.body = msg
+                    msgVC.recipients = [self.place.phone!]
+                    msgVC.messageComposeDelegate = self
+                    
+                    self.present(msgVC, animated: true, completion: nil)
+                }
+            })
+            alertController.addAction(smsAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        case 4:
+            //Lógica para abrir una página Web
+            guard let websiteURL = URL(string: self.place.web!) else { return }
+            let app = UIApplication.shared
+            
+            if app.canOpenURL(websiteURL) {
+                app.open(websiteURL, options: [:], completionHandler: nil)
+            }
         default:
             break
         }
+    }
+}
+
+extension DetailViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+        print(result)
     }
 }
