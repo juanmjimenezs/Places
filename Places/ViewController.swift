@@ -43,34 +43,49 @@ class ViewController: UITableViewController {
             do {
                 try self.fetchResultController.performFetch()
                 self.places = self.fetchResultController.fetchedObjects!
+                
+                //Si hay menos de 8 registros es porque no se han cargado los lugares por defecto
+                if self.places.count < 8 {
+                    self.loadDefaultData()
+                    //Volviemos a consultar los datos para que aparezcan los registros por defecto que acabamos de cargar
+                    try self.fetchResultController.performFetch()
+                    self.places = self.fetchResultController.fetchedObjects!
+                }
             } catch {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    func loadDefaultData() {
+        let names = ["Great Wall", "Tower of Pisa", "La Seu de Mallorca", "Alexanderplatz", "Atomium", "Big ben", "Cristo Redentor", "Torre Eiffel"]
+        let types = ["Monument", "Monument", "Catedral", "Square", "Museum", "Monument", "Monument", "Monument"]
+        let locations = ["Great Wall, Mutianyu Beijing, China", "Piazza del Duomo, 56126 Pisa PI, Italia", "La Seu Plaza de la Seu 5 07001 Palma Baleares, España", "Alexanderstraße 4 10178 Berlin, Deutschland", "Atomiumsquare 11020 Bruxelles, België", "London SW1A 0AA England", "Parque Nacional da Tijuca Alto da Boa Vista Rio de Janeiro - RJ 21072, Brasil", "5 Avenue Anatole France 75007 Paris, France"]
+        let telephones = ["+27 20 7219 4272","+27 20 7219 4272","+27 20 7219 4272","+27 20 7219 4272","+27 20 7219 4272","+27 20 7219 4272","+27 20 7219 4272","+27 20 7219 4272"]
+        let webs = ["https://en.wikipedia.org/wiki/Great_Wall_of_China", "http://www.towerofpisa.org/", "http://www.catedraldemallorca.info/principal/", "https://es.wikipedia.org/wiki/Alexanderplatz", "http://atomium.be/", "https://es.wikipedia.org/wiki/Big_Ben", "https://es.wikipedia.org/wiki/Cristo_Redentor", "http://www.toureiffel.paris/"]
+        let images = [#imageLiteral(resourceName: "murallachina"),#imageLiteral(resourceName: "torrepisa"),#imageLiteral(resourceName: "mallorca"),#imageLiteral(resourceName: "alexanderplatz"),#imageLiteral(resourceName: "atomium"),#imageLiteral(resourceName: "bigben"),#imageLiteral(resourceName: "cristoredentor"),#imageLiteral(resourceName: "torreeiffel")]
         
-        /*var place = Place(name: "Great Wall", type: "Monument", location: "Great Wall, Mutianyu Beijing, China", image: #imageLiteral(resourceName: "murallachina"), phone: "+27 20 7219 4272", web: "https://en.wikipedia.org/wiki/Great_Wall_of_China")
-        self.places.append(place)
-        
-        place = Place(name: "Tower of Pisa", type: "Monument", location: "Piazza del Duomo, 56126 Pisa PI, Italia", image: #imageLiteral(resourceName: "torrepisa"), phone: "+41 20 7219 4272", web: "http://www.towerofpisa.org/")
-        self.places.append(place)
-        
-        place = Place(name: "La Seu de Mallorca", type: "Catedral", location: "La Seu Plaza de la Seu 5 07001 Palma Baleares, España", image: #imageLiteral(resourceName: "mallorca"), phone: "+34 902 02 24 45", web: "http://www.catedraldemallorca.info/principal/")
-        self.places.append(place)
-        
-        place = Place(name: "Alexanderplatz", type: "Square", location: "Alexanderstraße 4 10178 Berlin, Deutschland", image: #imageLiteral(resourceName: "alexanderplatz"), phone: "5550000", web: "https://es.wikipedia.org/wiki/Alexanderplatz")
-        self.places.append(place)
-        
-        place = Place(name: "Atomium", type: "Museum", location: "Atomiumsquare 11020 Bruxelles, België", image: #imageLiteral(resourceName: "atomium"), phone: "+32(0)2 475 6543", web: "http://atomium.be/")
-        self.places.append(place)
-        
-        place = Place(name: "Big ben", type: "Monument", location: "London SW1A 0AA England", image: #imageLiteral(resourceName: "bigben"), phone: "+44 20 7219 4272", web: "https://es.wikipedia.org/wiki/Big_Ben")
-        self.places.append(place)
-        
-        place = Place(name: "Cristo Redentor", type: "Monument", location: "Parque Nacional da Tijuca Alto da Boa Vista Rio de Janeiro - RJ 21072, Brasil", image: #imageLiteral(resourceName: "cristoredentor"), phone: "+46 20 7219 4272", web: "https://es.wikipedia.org/wiki/Cristo_Redentor")
-        self.places.append(place)
-        
-        place = Place(name: "Torre Eiffel", type: "Monument", location: "5 Avenue Anatole France 75007 Paris, France", image: #imageLiteral(resourceName: "torreeiffel"), phone: "+43 20 7219 4272", web: "http://www.toureiffel.paris/")
-        self.places.append(place)*/
+        if let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer {
+            let context = container.viewContext
+            
+            for i in 0..<names.count {
+                let place = NSEntityDescription.insertNewObject(forEntityName: "Place", into: context) as? Place
+                
+                place?.name = names[i]
+                place?.type = types[i]
+                place?.location = locations[i]
+                place?.phone = telephones[i]
+                place?.web = webs[i]
+                place?.rating = "rating"
+                place?.image = UIImagePNGRepresentation(images[i]) as NSData?
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Ha habido al guardar el lugar en Core Data")
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -203,10 +218,15 @@ class ViewController: UITableViewController {
         }
     }
     
+    /**
+     Realiza el proceso de filtrado de lugares
+     */
     func filterContentFor(textToSearch: String) {
         self.searchResult = self.places.filter({ (place) -> Bool in
             let nameToFind = place.name.range(of: textToSearch, options: .caseInsensitive)
-            return nameToFind != nil
+            /*let typeToFind = place.type.range(of: textToSearch, options: .caseInsensitive)
+            let locationToFind = place.location.range(of: textToSearch, options: .caseInsensitive)*/
+            return nameToFind != nil/* || typeToFind != nil || locationToFind != nil*/
         })
     }
 }
