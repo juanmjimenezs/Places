@@ -44,12 +44,11 @@ class ViewController: UITableViewController {
                 try self.fetchResultController.performFetch()
                 self.places = self.fetchResultController.fetchedObjects!
                 
-                //Si hay menos de 8 registros es porque no se han cargado los lugares por defecto
-                if self.places.count < 8 {
+                //Si es la primera vez entonces la BD está vacía y cargamos los lugares por defecto
+                let defaults = UserDefaults.standard
+                if !defaults.bool(forKey: "hasLoadDefaultInfo") {
                     self.loadDefaultData()
-                    //Volviemos a consultar los datos para que aparezcan los registros por defecto que acabamos de cargar
-                    try self.fetchResultController.performFetch()
-                    self.places = self.fetchResultController.fetchedObjects!
+                    defaults.set(true, forKey: "hasLoadDefaultInfo")
                 }
             } catch {
                 print("Error: \(error)")
@@ -91,6 +90,21 @@ class ViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Mostramos el tutorial solo si el usuario nunca lo ha visto...
+        let defaults = UserDefaults.standard
+        let hasViewedTutorial = defaults.bool(forKey: "hasViewedTutorial")
+        if hasViewedTutorial {
+            return
+        }
+        if let tutorialVC = storyboard?.instantiateViewController(withIdentifier: "tutorialPageID") as? TutorialPageViewController {
+            self.present(tutorialVC, animated: true, completion: nil)
+        }
+        //------------------------
     }
     
     override func didReceiveMemoryWarning() {
@@ -224,9 +238,9 @@ class ViewController: UITableViewController {
     func filterContentFor(textToSearch: String) {
         self.searchResult = self.places.filter({ (place) -> Bool in
             let nameToFind = place.name.range(of: textToSearch, options: .caseInsensitive)
-            /*let typeToFind = place.type.range(of: textToSearch, options: .caseInsensitive)
-            let locationToFind = place.location.range(of: textToSearch, options: .caseInsensitive)*/
-            return nameToFind != nil/* || typeToFind != nil || locationToFind != nil*/
+            let typeToFind = place.type.range(of: textToSearch, options: .caseInsensitive)
+            let locationToFind = place.location.range(of: textToSearch, options: .caseInsensitive)
+            return nameToFind != nil || typeToFind != nil || locationToFind != nil
         })
     }
 }

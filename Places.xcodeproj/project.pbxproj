@@ -19,6 +19,9 @@
 		A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */; };
 		A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A581DF77D8B00E75DA6 /* Place.swift */; };
 		A547D52C1DFF511600B6EE2F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D52B1DFF511600B6EE2F /* RoundedButton.swift */; };
+		A55A0DCE1E03920600A4C81B /* TutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A0DCD1E03920500A4C81B /* TutorialContentViewController.swift */; };
+		A55A0DD01E0396FC00A4C81B /* TutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A0DCF1E0396FC00A4C81B /* TutorialStep.swift */; };
+		A55A0DD21E039AE400A4C81B /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A0DD11E039AE400A4C81B /* TutorialPageViewController.swift */; };
 		A567B5FF1DF9E19D00C43594 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B5FE1DF9E19C00C43594 /* MapViewController.swift */; };
 		A567B6011DFB86CD00C43594 /* AddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B6001DFB86CD00C43594 /* AddPlaceViewController.swift */; };
 		A576E1781DF9C290000A0460 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A576E1771DF9C28F000A0460 /* MapKit.framework */; };
@@ -39,6 +42,9 @@
 		A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		A5398A581DF77D8B00E75DA6 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A547D52B1DFF511600B6EE2F /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A55A0DCD1E03920500A4C81B /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentViewController.swift; sourceTree = "<group>"; };
+		A55A0DCF1E0396FC00A4C81B /* TutorialStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStep.swift; sourceTree = "<group>"; };
+		A55A0DD11E039AE400A4C81B /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		A567B5FE1DF9E19C00C43594 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A567B6001DFB86CD00C43594 /* AddPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlaceViewController.swift; sourceTree = "<group>"; };
 		A576E1771DF9C28F000A0460 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -76,21 +82,24 @@
 		A5398A3D1DF777B900E75DA6 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				A5398A4A1DF777B900E75DA6 /* Info.plist */,
-				A5398A3E1DF777B900E75DA6 /* AppDelegate.swift */,
-				A5398A521DF77D3900E75DA6 /* DetailViewController.swift */,
-				A567B5FE1DF9E19C00C43594 /* MapViewController.swift */,
-				A5398A581DF77D8B00E75DA6 /* Place.swift */,
-				A51F09381DFE19EC007B3ADA /* Places.xcdatamodeld */,
-				A5398A501DF77C2400E75DA6 /* PlaceCell.swift */,
-				A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */,
-				A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */,
-				A5398A401DF777B900E75DA6 /* ViewController.swift */,
 				A567B6001DFB86CD00C43594 /* AddPlaceViewController.swift */,
-				A547D52B1DFF511600B6EE2F /* RoundedButton.swift */,
+				A5398A3E1DF777B900E75DA6 /* AppDelegate.swift */,
 				A5398A451DF777B900E75DA6 /* Assets.xcassets */,
+				A5398A521DF77D3900E75DA6 /* DetailViewController.swift */,
+				A5398A4A1DF777B900E75DA6 /* Info.plist */,
 				A5398A471DF777B900E75DA6 /* LaunchScreen.storyboard */,
 				A5398A421DF777B900E75DA6 /* Main.storyboard */,
+				A567B5FE1DF9E19C00C43594 /* MapViewController.swift */,
+				A5398A581DF77D8B00E75DA6 /* Place.swift */,
+				A5398A501DF77C2400E75DA6 /* PlaceCell.swift */,
+				A5398A531DF77D3900E75DA6 /* PlaceDetailViewCell.swift */,
+				A51F09381DFE19EC007B3ADA /* Places.xcdatamodeld */,
+				A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */,
+				A547D52B1DFF511600B6EE2F /* RoundedButton.swift */,
+				A55A0DCD1E03920500A4C81B /* TutorialContentViewController.swift */,
+				A55A0DD11E039AE400A4C81B /* TutorialPageViewController.swift */,
+				A55A0DCF1E0396FC00A4C81B /* TutorialStep.swift */,
+				A5398A401DF777B900E75DA6 /* ViewController.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -182,12 +191,15 @@
 			files = (
 				A5398A511DF77C2400E75DA6 /* PlaceCell.swift in Sources */,
 				A51F093A1DFE19EC007B3ADA /* Places.xcdatamodeld in Sources */,
+				A55A0DD21E039AE400A4C81B /* TutorialPageViewController.swift in Sources */,
 				A5398A411DF777B900E75DA6 /* ViewController.swift in Sources */,
 				A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */,
 				A567B6011DFB86CD00C43594 /* AddPlaceViewController.swift in Sources */,
+				A55A0DD01E0396FC00A4C81B /* TutorialStep.swift in Sources */,
 				A5398A561DF77D3900E75DA6 /* PlaceDetailViewCell.swift in Sources */,
 				A547D52C1DFF511600B6EE2F /* RoundedButton.swift in Sources */,
 				A5398A3F1DF777B900E75DA6 /* AppDelegate.swift in Sources */,
+				A55A0DCE1E03920600A4C81B /* TutorialContentViewController.swift in Sources */,
 				A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */,
 				A5398A551DF77D3900E75DA6 /* DetailViewController.swift in Sources */,
 				A567B5FF1DF9E19D00C43594 /* MapViewController.swift in Sources */,
