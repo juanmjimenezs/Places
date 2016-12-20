@@ -208,6 +208,7 @@ class ViewController: UITableViewController {
                 
                 if self.searchController.isActive {
                     place = self.searchResult[indexPath.row]
+                    self.searchController.isActive = false//Ocultamos la barra al pasar al detalle
                 } else {
                     place = self.places[indexPath.row]
                 }
