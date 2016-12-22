@@ -14,7 +14,7 @@ class AboutUsViewController: UITableViewController {
     
     let sectionContent = [["App Store rating", "Leave us your feedback"],["Facebook", "Twitter"]]
     
-    let sectionLinks = [["", ""], ["https://www.facebook.com/juanmjimenezs", "https://twitter.com/juanmjimenezs"]]
+    let sectionLinks = [["https://itunes.apple.com/es/app/motor-sport-racing/id804786065", "http://www.enter.co/contactenos/"], ["https://www.facebook.com/juanmjimenezs", "https://twitter.com/juanmjimenezs"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,27 @@ class AboutUsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sections[section]
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                if let appStoreURL = URL(string: self.sectionLinks[indexPath.section][indexPath.row]) {
+                    let app = UIApplication.shared
+                    if app.canOpenURL(appStoreURL) {
+                        app.open(appStoreURL, options: [:], completionHandler: nil)
+                    }
+                }
+            case 1:
+                performSegue(withIdentifier: "showWebView", sender: self.sectionLinks[indexPath.section][indexPath.row])
+            default:
+                <#code#>
+            }
+        default:
+            <#code#>
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -95,14 +116,19 @@ class AboutUsViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showWebView" {
+            let destinationVC = segue.destination as! WebViewController
+            destinationVC.urlName = sender as! String
+        }
     }
-    */
+    
 
 }

@@ -19,6 +19,7 @@
 		A5398A571DF77D3900E75DA6 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */; };
 		A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398A581DF77D8B00E75DA6 /* Place.swift */; };
 		A547D52C1DFF511600B6EE2F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547D52B1DFF511600B6EE2F /* RoundedButton.swift */; };
+		A54DAC7A1E0B702900456EE2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DAC791E0B702800456EE2 /* WebViewController.swift */; };
 		A55A0DCE1E03920600A4C81B /* TutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A0DCD1E03920500A4C81B /* TutorialContentViewController.swift */; };
 		A55A0DD01E0396FC00A4C81B /* TutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A0DCF1E0396FC00A4C81B /* TutorialStep.swift */; };
 		A55A0DD21E039AE400A4C81B /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A0DD11E039AE400A4C81B /* TutorialPageViewController.swift */; };
@@ -45,6 +46,7 @@
 		A5398A541DF77D3900E75DA6 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		A5398A581DF77D8B00E75DA6 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A547D52B1DFF511600B6EE2F /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A54DAC791E0B702800456EE2 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A55A0DCD1E03920500A4C81B /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentViewController.swift; sourceTree = "<group>"; };
 		A55A0DCF1E0396FC00A4C81B /* TutorialStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialStep.swift; sourceTree = "<group>"; };
 		A55A0DD11E039AE400A4C81B /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				A5398A421DF777B900E75DA6 /* Main.storyboard */,
 				A5EE3A301E075F0C00C537A7 /* Discover.storyboard */,
 				A5EE3A2D1E0759E400C537A7 /* AboutUs.storyboard */,
+				A54DAC791E0B702800456EE2 /* WebViewController.swift */,
 				A59E687F1E0A133E0052FCA3 /* AboutUsViewController.swift */,
 				A567B5FE1DF9E19C00C43594 /* MapViewController.swift */,
 				A5398A581DF77D8B00E75DA6 /* Place.swift */,
@@ -215,6 +218,7 @@
 				A5398A591DF77D8B00E75DA6 /* Place.swift in Sources */,
 				A5398A551DF77D3900E75DA6 /* DetailViewController.swift in Sources */,
 				A567B5FF1DF9E19D00C43594 /* MapViewController.swift in Sources */,
+				A54DAC7A1E0B702900456EE2 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
